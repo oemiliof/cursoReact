@@ -1,43 +1,37 @@
-import React, { useState } from 'react'
-import AddCategory from './Categorias/AddCategory';
-import GifGrid from './Categorias/GifGrid';
+import React, { useState } from "react";
+import AddCategory from "./Categorias/AddCategory";
+import GifGrid from "./Categorias/GifGrid";
 
-export const GifExpertApp = () => {
+// export const GifExpertApp = () => {
+export const GifExpertApp = ({ defaultCategories = [] }) => {
+  // const categories = ['One Punch', 'Samurai X', 'Fragon Ball'];
 
-    // const categories = ['One Punch', 'Samurai X', 'Fragon Ball'];
+  //   const [categories, setCategories] = useState(["One Punch"]);
+  const [categories, setCategories] = useState(defaultCategories);
 
-    const [categories, setCategories] = useState(['One Punch'])
+  // const handleAdd = () => {
+  //     // setCategories([...categories, ('test ' + parseInt(categories.length + 1))]);
+  //     // setCategories([('test ' + parseInt(categories.length + 1)), ...categories]);
+  //     setCategories(cats => [...categories, ('test ' + parseInt(categories.length + 1))]);
 
-    // const handleAdd = () => {
-    //     // setCategories([...categories, ('test ' + parseInt(categories.length + 1))]);
-    //     // setCategories([('test ' + parseInt(categories.length + 1)), ...categories]);
-    //     setCategories(cats => [...categories, ('test ' + parseInt(categories.length + 1))]);
+  //     console.log(categories);
+  // };
 
+  // console.log(categories)
 
+  return (
+    <>
+      <h2>GifExpertApp</h2>
 
-    //     console.log(categories);
-    // };
+      <AddCategory setCategories={setCategories} />
 
-    // console.log(categories)
+      <hr />
 
-    return (
-        <>
-            <h2>GifExpertApp</h2>
+      {/* <button onClick={handleAdd}>Agregar</button> */}
 
-            <AddCategory setCategories={setCategories} />
-
-            <hr />
-
-            {/* <button onClick={handleAdd}>Agregar</button> */}
-
-            {
-                categories.map(category => (
-                    <GifGrid
-                        key={category}
-                        category={category}
-                    />
-                ))
-            }
-        </>
-    )
-}
+      {categories.map((category) => (
+        <GifGrid key={category} category={category} />
+      ))}
+    </>
+  );
+};

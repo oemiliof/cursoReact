@@ -1,15 +1,20 @@
-import React from 'react'
+import React from "react";
+import PropTypes from "prop-types";
 
-const GifGridItem = ({ id, title, url }) => {
+const GifGridItem = ({ title, url }) => {
+  // console.log(id, title, url)
 
-    // console.log(id, title, url)
+  return (
+    <div className="card animate__animated animate__fadeInDown">
+      <img src={url} alt={title}></img>
+      <p>{title}</p>
+    </div>
+  );
+};
 
-    return (
-        <div className='card animate__animated animate__fadeInDown'>
-            <img src={url} alt={title}></img>
-            <p>{title}</p>
-        </div>
-    )
-}
+GifGridItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+};
 
-export default GifGridItem
+export default GifGridItem;
